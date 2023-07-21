@@ -1,0 +1,42 @@
+/* form  */
+.product-form {
+    width: 20rem;
+    max-width: 90%;
+    margin: auto;
+}
+
+
+.form-control label,
+.form-control input,
+.form-control textarea {
+    display: block;
+    width: 100%;
+}
+
+.form-control input,
+.form-control textarea {
+    font: inherit;
+    border-radius: 2px;
+    border: 1px solid #015c53;
+    margin: 0.7rem 0;
+}
+
+.product-form button {
+    border-color: #015c53;
+    color:#015c53;
+    background-color: #fff;
+    border-radius: 5px; 
+}
+
+.product-form button:hover {
+    background-color:#015c53;
+    color: #fff;
+}
+
+.form-control input,
+.form-control textarea {
+    outline-color: #015c53;
+}
+
+
+

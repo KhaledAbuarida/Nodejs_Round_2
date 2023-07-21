@@ -2,6 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const pnfController = require('./controllers/404');
 
 const app = express();
 
@@ -16,15 +17,12 @@ app.set('views','views');
 app.use(bodyParser.urlencoded({extended: false}))
 
 //------ importing Routes
-const adminData = require('./routes/adminRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 const shopRoutes = require('./routes/shopRoutes');
 
 //------ Routes
-app.use('/admin',adminData.routes);
+app.use('/admin',adminRoutes);
 app.use(shopRoutes);
-
-app.use((req, res, next) => {
-    res.status(404).render('404', {pageTitle: 'PNF'});
-});
+app.use(pnfController.get404);
 
 app.listen(5000);

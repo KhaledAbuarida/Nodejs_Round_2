@@ -1,4 +1,5 @@
 const Product = require('../modules/product');
+const Cart = require('../modules/cart');
 
 exports.getIndex = (req, res, next) => {
     // console.log(Product.showAll());
@@ -23,7 +24,10 @@ exports.getCart = (req, res, next) => {
 
 exports.postCart = (req, res, next) => {
     const productId = req.body.productId;
-    console.log(productId);
+    const product = Product.findById(productId);
+    Cart.save(product);
+    
+    console.log(Cart.getCart());
     res.redirect('/cart');
 }
 

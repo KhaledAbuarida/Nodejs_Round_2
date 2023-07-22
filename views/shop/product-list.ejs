@@ -18,10 +18,10 @@
                                         <h3 class="product__price">$<%= product.price %> </h3>
                                         <p class="card-text"><%= product.description %> </p>
                                         <a href="/products/<%= product.id %>" class="btn btn-success w-100">Details</a>
-                                        <form action="/add-to-cart" method="post">
+                                        <form action="/cart" method="post">
                                             <button class="btn btn-success w-100 mt-3" type="submit">Add to Cart</button> 
+                                            <input type="hidden" name="productId" value="<%= product.id %>">
                                         </form>
-                                        
                                     </div>
                                 </div>
                             </div>

@@ -5,5 +5,17 @@
 <body>
     <%- include('../includes/nav.ejs') %>
 
+    <main class="text-center">
+        <h1> <%= product.title %> </h1>
+        <hr>
+        <img src="<%= product.imageUrl %> " width="250px" height="300px" alt="<%= product.title %> ">
+        <h2> $<%= product.price %> </h2>
+        <p> <%= product.description %> </p>
+        <form action="/cart" method="post">
+            <button class="btn btn-success mt-3" type="submit">Add to Cart</button> 
+            <input type="hidden" name="productId" value="<%= product.id %>">
+        </form>
+    </main>
+
 
 <%- include('../includes/end.ejs') %>

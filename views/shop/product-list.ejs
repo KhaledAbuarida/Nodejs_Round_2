@@ -1,0 +1,37 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+
+</head>
+<body>
+    <%- include('../includes/nav.ejs') %>
+
+        <main class="container">
+            <div>
+                <% if(prods.length > 0) { %>
+                    <div class="row">
+                        <% for(let product of prods) { %>
+                            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                                <div class="card mb-5" style="width: 20rem;">
+                                    <img src="<%= product.imageUrl %>" class="card-img-top" height="300px" alt="<%= product.title %>">
+                                    <div class="card-body">
+                                        <h2 class="card-title"> <b> <%= product.title  %> </b></h2>
+                                        <h3 class="product__price">$<%= product.price %> </h3>
+                                        <p class="card-text"><%= product.description %> </p>
+                                        <a href="/products/<%= product.id %>" class="btn btn-success w-100">Details</a>
+                                        <form action="/add-to-cart" method="post">
+                                            <button class="btn btn-success w-100 mt-3" type="submit">Add to Cart</button> 
+                                        </form>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>    
+                <% } else { %>
+                    <h1> No Products Found!</h1>  
+                <% } %>
+            </div>
+        </main>    
+
+<%- include('../includes/end.ejs') %>
+

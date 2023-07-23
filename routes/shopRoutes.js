@@ -12,12 +12,15 @@ routes.get('/products', shopController.getProducts);
 
 routes.get('/products/:productId', shopController.getProductForDetails);
 
+//------ Cart
 routes.get('/cart', shopController.getCart);
 
 routes.post('/cart', shopController.postCart);
 
+//------ Order
 routes.get('/orders', shopController.getOrders);
 
+//------ Checkout
 routes.get('/checkout', shopController.getCheckout);
 
 module.exports = routes;

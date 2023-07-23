@@ -35,4 +35,16 @@ module.exports = class Cart {
         return cart;
     }
 
+    static deleteProduct(id){
+        //searching on the product in the cart
+        const targetProduct = cart.products.find(p => p.id === id);
+        const productIndex = cart.products.findIndex(p => p.id === id);
+        if(targetProduct){
+            //the product is found in the cart
+            const productQuantityPrice = targetProduct.price * targetProduct.qty;
+            cart.totalPrice -= productQuantityPrice;
+            cart.products.splice(productIndex, 1);
+        }
+    }
+
 }

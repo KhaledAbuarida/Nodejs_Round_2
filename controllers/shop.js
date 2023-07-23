@@ -28,7 +28,7 @@ exports.postCart = (req, res, next) => {
     Cart.save(product);
     
     console.log(Cart.getCart());
-    res.redirect('/cart');
+    res.redirect('/products');
 }
 
 exports.getCheckout = (req, res, next) => {

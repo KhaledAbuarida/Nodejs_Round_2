@@ -22,4 +22,9 @@ module.exports = class Product {
         return product;
     }
 
+    static deleteById(id){
+        const productIndex = products.findIndex(p => p.id === id);
+        products.splice(productIndex, 1);
+    }
+
 }

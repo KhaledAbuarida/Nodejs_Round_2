@@ -7,28 +7,28 @@
 
     <main class="container">
     <% if(crt != null){ %>
-            <h1>Total Price: <%= crt.totalPrice %> </h1>
+            <h1 class="text-center">Total Price: $<%= crt.totalPrice %> </h1>
             <hr>
             <div class="row">
               <% for(let product of crt.products) { %>
                 <div class="col-sm-12 col-md-6">
-                  <div class="card mb-3" style="max-width: 600px;">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="<%= product.imageUrl %>" class="img-fluid rounded-start" alt="<%= product.title %>">
+                  <div class="card mb-3" style="max-width: 600px; min-height: 100px;">
+                    <div class="row">
+                      <div class="col-md-5 d-flex justify-items-center align-items-center flex-row">
+                        <img src="<%= product.imageUrl %>" class=" rounded-start" style="height: 268px; width: 230px;" alt="<%= product.title %>">
                       </div>
-                      <div class="col-md-8">
+                      <div class="col-md-7">
                         <div class="card-body">
-                          <h2 class="card-title"><%= product.title %></h2>
+                          <h2 class="card-title"><b><%= product.title%> (<%= product.qty %>)</b></h2>
                           <hr>
                           <h5 class="card-price"><b>Price:</b> $<%= product.price %></h5>
-                          <h5 class="card-quantity"><b>Quantity:</b> <%= product.qty %> </h5>
-                          <p class="card-text"><%= product.description %> </p>
+                          <!-- <h5 class="card-quantity"><b>Quantity:</b> <%= product.qty %> </h5> -->
+                          <p class="card-text" style=" overflow: hidden; height: 90px;"><%= product.description %> </p>
                           <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
                         </div>
                       </div>
                     </div>
-                </div>
+                  </div>
                 </div>
               <% } %>
             </div>

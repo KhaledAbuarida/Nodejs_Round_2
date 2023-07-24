@@ -12,16 +12,21 @@
                 <div class="row">
                     <% for(let product of prods) { %>
                         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-                            <div class="card mb-5" style="width: 20rem;">
-                                <img src="<%= product.imageUrl %>" class="card-img-top" height="300px" alt="<%= product.title %>">
+                            <div class="card mb-5" style="width: 20rem;  min-height: 200px;">
+                                <div class="d-flex flex-column justify-items-center align-items-center mt-3">
+                                    <img src="<%= product.imageUrl %>" class="card-img-top img-fluid" alt="<%= product.title %>" style="height: 250px; width: 200px;">
+                                </div>
                                 <div class="card-body">
                                     <h2 class="card-title"> <b> <%= product.title  %> </b></h2>
                                     <h3 class="product__price">$<%= product.price %> </h3>
-                                    <p class="card-text"><%= product.description %> </p>
+                                    <p class="card-text" style=" overflow: hidden; height: 60px;"><%= product.description %> </p>
+                                    <div class="card-footer">
                                     <form action="/cart" method="post">
                                         <button class="btn btn-success w-100 mt-3" type="submit">Add to Cart</button> 
                                         <input type="hidden" name="productId" value="<%= product.id %>">
+                                        <input type="hidden" name="isIndex" value="true">
                                     </form>
+                                    </div>
                                     
                                 </div>
                             </div>

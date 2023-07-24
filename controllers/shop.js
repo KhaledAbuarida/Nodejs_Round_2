@@ -29,7 +29,12 @@ exports.postCart = (req, res, next) => {
     Cart.save(product);
     
     console.log(Cart.getCart());
-    res.redirect('/products');
+    if(req.body.isIndex === "true"){
+        return res.redirect('/');
+    }
+    else{
+        return res.redirect('/products');
+    }
 }
 
 exports.getCheckout = (req, res, next) => {

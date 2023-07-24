@@ -3,6 +3,7 @@
 
 </head>
 <body>
+
     <%- include('../includes/nav.ejs') %>
 
         <main class="container">
@@ -11,7 +12,7 @@
                     <div class="row">
                         <% for(let product of prods) { %>
                             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-                                <div class="card mb-5" style="width: 20rem; min-height: 60vh;">
+                                <div class="card mb-5" style="width: 20rem; min-height: 200px;">
                                     <div class="d-flex flex-column justify-items-center align-items-center mt-3">
                                         <img src="<%= product.imageUrl %>" class="card-img-top img-fluid" alt="<%= product.title %>" style="height: 250px; width: 200px;">
                                     </div>

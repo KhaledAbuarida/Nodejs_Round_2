@@ -53,7 +53,7 @@ exports.postDeleteProduct = (req, res, next) => {
     Cart.deleteProduct(prodId);
 
     console.log('After Deleting',Cart.getCart());
-    res.redirect('admin/products');
+    res.redirect('/admin/products');
 }
 
 exports.getAdminProducts = (req, res, next) => {

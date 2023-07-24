@@ -19,7 +19,8 @@ exports.getProductForDetails = (req, res, next) => {
 }
 
 exports.getCart = (req, res, next) => {
-    res.render('shop/cart', {pageTitle: 'Cart', path: '/cart'});
+    const cart = Cart.getCart();
+    res.render('shop/cart', {pageTitle: 'Cart', path: '/cart', crt: cart});
 }
 
 exports.postCart = (req, res, next) => {

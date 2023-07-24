@@ -6,7 +6,36 @@
     <%- include('../includes/nav.ejs') %>
 
     <main class="container">
-        <h1> There is no items in your cart! </h1>
+    <% if(crt != null){ %>
+            <h1>Total Price: <%= crt.totalPrice %> </h1>
+            <hr>
+            <div class="row">
+              <% for(let product of crt.products) { %>
+                <div class="col-sm-12 col-md-6">
+                  <div class="card mb-3" style="max-width: 600px;">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <img src="<%= product.imageUrl %>" class="img-fluid rounded-start" alt="<%= product.title %>">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h2 class="card-title"><%= product.title %></h2>
+                          <hr>
+                          <h5 class="card-price"><b>Price:</b> $<%= product.price %></h5>
+                          <h5 class="card-quantity"><b>Quantity:</b> <%= product.qty %> </h5>
+                          <p class="card-text"><%= product.description %> </p>
+                          <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                </div>
+              <% } %>
+            </div>
+        <% } else { %>
+            <h1>There is no products in your cart yet!</h1>
+        <% } %>
+ 
 
     </main>
 

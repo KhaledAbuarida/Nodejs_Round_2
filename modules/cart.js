@@ -45,6 +45,8 @@ module.exports = class Cart {
             cart.totalPrice -= productQuantityPrice;
             cart.products.splice(productIndex, 1);
         }
+        if(cart.totalPrice === 0){
+            cart = null;
+        }
     }
-
 }

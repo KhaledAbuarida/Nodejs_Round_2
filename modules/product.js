@@ -1,5 +1,5 @@
 const products = [];
-
+const getDb = require('../util/database').getDb;
 module.exports = class Product {
     constructor(title, price, imageUrl, description){
         this.title = title;
@@ -11,6 +11,18 @@ module.exports = class Product {
     save(){
         this.id = Math.random().toString();
         products.push(this);
+
+        const db = getDb();
+        db.collection('products').insertOne(this)
+        .then(result => {
+            console.log(result);
+            }
+        )
+        .catch(
+            err => {
+                console.log(err);
+            }
+        );
     }
 
     static showAll(){

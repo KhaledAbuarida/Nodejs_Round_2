@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const pnfController = require('./controllers/404');
+const mongoConnect = require('./util/database').mongoConnect;
 
 const app = express();
 
@@ -27,4 +28,6 @@ app.use('/admin',adminRoutes);
 app.use(shopRoutes);
 app.use(pnfController.get404);
 
-app.listen(5000);
+mongoConnect(() => {
+    app.listen(5000);
+})

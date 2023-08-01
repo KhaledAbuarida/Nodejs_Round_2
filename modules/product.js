@@ -13,7 +13,7 @@ module.exports = class Product {
         products.push(this);
 
         const db = getDb();
-        db.collection('products').insertOne(this)
+        return db.collection('products').insertOne(this)
         .then(result => {
             console.log(result);
             }
@@ -26,7 +26,17 @@ module.exports = class Product {
     }
 
     static showAll(){
-        return products;
+        const db = getDb();
+        return db.collection('products')
+        .find()
+        .toArray()
+        .then(products => {
+            console.log(products.length, 'products');
+            return products;
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
     static findById(id){

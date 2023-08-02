@@ -1,24 +1,29 @@
-const products = [];
+const mongodb = require('mongodb');
 const getDb = require('../util/database').getDb;
+const products = [];
+
 module.exports = class Product {
-    constructor(title, price, imageUrl, description){
+    constructor(title, price, imageUrl, description, id){
         this.title = title;
         this.price = price;
         this.imageUrl = imageUrl;
         this.description = description;
+        this._id = id;
     }
 
     save(){
-        this.id = Math.random().toString();
-        products.push(this);
-
         const db = getDb();
-        return db.collection('products').insertOne(this)
-        .then(result => {
+        let dbObject;
+        if(this._id)
+        {
+            dbObject = db.collection('products').updateOne({_id: new mongodb.ObjectId(this._id)}, {$set: this});
+        }
+        else {
+            dbObject = db.collection('products').insertOne(this);
+        }
+        return dbObject.then(result => {
             console.log(result);
-            }
-        )
-        .catch(
+        }).catch(
             err => {
                 console.log(err);
             }
@@ -40,13 +45,25 @@ module.exports = class Product {
     }
 
     static findById(id){
-        const product = products.find(p => p.id === id);
-        return product;
+        const db = getDb();
+        return db.collection('products').find({_id: new mongodb.ObjectId(id)})
+        .next()
+        .then(product => {
+            return product;
+        })
+        .catch(err => {
+            console.log(err);
+        });
     }
 
     static deleteById(id){
-        const productIndex = products.findIndex(p => p.id === id);
-        products.splice(productIndex, 1);
+        const db = getDb();
+        return db.collection('products').deleteOne({_id: new mongodb.ObjectId(id)})
+        .then(result => {
+            console.log('Deleted');
+        }).catch(err => {
+            console.log(err);
+        });
     }
 
 }

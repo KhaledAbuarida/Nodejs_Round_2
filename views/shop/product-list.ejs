@@ -20,7 +20,7 @@
                                         <h3 class="product__price">$<%= product.price %> </h3>
                                         <p class="card-text" style=" overflow: hidden; height: 60px;"><%= product.description %> </p>
                                         <div class="card-footer">
-                                            <a href="/products/<%= product.id %>" class="btn btn-success w-100 mt-3">Details</a>
+                                            <a href="/products/<%= product._id %>" class="btn btn-success w-100 mt-3">Details</a>
                                             <form action="/cart" method="post">
                                                 <button class="btn btn-success w-100 mt-3" type="submit">Add to Cart</button> 
                                                 <input type="hidden" name="productId" value="<%= product.id %>">

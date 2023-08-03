@@ -25,6 +25,7 @@ module.exports = class Cart {
                 products: [],
                 totalPrice: 0   
             }
+            //now adding the product that we want add!
             product.qty = 1;
             cart.totalPrice = parseFloat(product.price);
             cart.products.push(product);

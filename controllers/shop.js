@@ -36,16 +36,22 @@ exports.getCart = (req, res, next) => {
 
 exports.postCart = (req, res, next) => {
     const productId = req.body.productId;
-    const product = Product.findById(productId);
-    Cart.save(product);
+    Product.findById(productId)
+        .then(product => {
+            return req.user.addToCart(product);
+            // console.log(product);
+        })
+
+
+    // Cart.save(product);
     
-    console.log(Cart.getCart());
-    if(req.body.isIndex === "true"){
-        return res.redirect('/');
-    }
-    else{
-        return res.redirect('/products');
-    }
+    // console.log(Cart.getCart());
+    // if(req.body.isIndex === "true"){
+    //     return res.redirect('/');
+    // }
+    // else{
+    //     return res.redirect('/products');
+    // }
 };
 
 exports.getCheckout = (req, res, next) => {
